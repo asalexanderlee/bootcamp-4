@@ -1,5 +1,7 @@
 # bootcamp-4
 
+Morning folks! This morning we are going to learn how to send emails, setup cron jobs, and secure our API. Then, we'll do a warm up exercise to prime us for React and Redux.
+
 Friendly note: As you're getting more comfortable with Javascript and Express, your instructions will be come less and less specific. Lean in!
 
 ## Breakouts
