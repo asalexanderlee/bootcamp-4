@@ -70,13 +70,13 @@ app.get("/" (req, res) => {
 
 Writing HTML in your routes becomes a little burdensome, so in days of lore, developers often turned to rendering engines like Handlebars, Jade, or EJS.
 
-Your task is to integrate (EJS)[http://ejs.co/] into Express and then use it to render an HTML webpage that allows users to add or remove items from their todo list.
+Your task is to integrate [EJS](http://ejs.co/) into Express and then use it to render an HTML webpage that allows users to add or remove items from their todo list.
 
 ### Release 3
 
 _STOP:_ Commit and push your scratch branch to github and checkout the branch you were working on in `release 1`.
 
-* Emails! Let's use (NodeMailer)[https://nodemailer.com/about/] to send emails to our users. Setup a [cronjob](https://github.com/kelektiv/node-cron) that sends the following email to all of its users everyday at 10:00am.
+* Emails! Let's use [NodeMailer](https://nodemailer.com/about/) to send emails to our users. Setup a [cronjob](https://github.com/kelektiv/node-cron) that sends the following email to all of its users everyday at 10:00am.
 
 ```javascript
 `Hello, ${username},
