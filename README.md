@@ -15,12 +15,12 @@ Friendly note: As you're getting more comfortable with Javascript and Express, y
 
 It's time we have "the talk." The talk about security, that is. If your website (or your code) is anywhere online (including GitHub) you are vulnerable to attack! AH! There are a lot of ways that attackers can make your life miserable. Some will scrape GitHub for passwords or SSH keys that were accidentally committed. With this information they cause take ahold of your servers and mine for BitCoin (and incurring $1000s of costs to you). Or, if you're not careful writing your code, hackers can inject all sorts of malicious code into your site. Or, even if you do everything right, a hacker can find a vulnerability in a package you are using and exploit you and everyone else using the package. With every line of code you write, you have to keep security in mind. Here are some best practices:
 
-* NEVER EVER write passwords, api keys, or anything secret into your code. Instead, use environmental variables. The package `dotenv` is a great place to start.
+* NEVER EVER write passwords, api keys, or anything secret into your code. Instead, use [environmental variables](https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786). The package `dotenv` is a great place to start.
 * Install and enable `helmet`. It adds some basic security to Express.
-* Keep system logs so you can track for suspicious activity.
+* Keep system logs (see [morgan](https://www.npmjs.com/package/morgan)) so you can track for suspicious activity.
 * Always use ODMs like Mongoose to validate user data.
 * Always sanitize params and form data. Use `express-sanitizer`.
-* Always set your NODE_ENV environmental variable to `production` when in a production environment.
+* Always set your NODE_ENV environmental variable to `production` when in a production environment (we will talk about the differences between your development and production environments later).
 
 While there are many other ways to protect your app, we'll start by implementing the above list. In the future, we will also learn how to keep a site secure by using TLS. But you don't have to worry about that now.
 
@@ -32,7 +32,7 @@ _STOP:_ Before you start on release 1, commit you code and push it up to GitHub,
 
 Since we are thinking about security, let's add an authorization layer to our API. In the future our web apps are going to use a package called Passport to handle user logins and registration, but before we get there, we need to understand the fundamentals.
 
-* Create a route that allows a new user to register an account. For this (very contrived) example, a user can register by posting a unique username, password, and email to the server. Upon post of the account, the server should return a unique key (hint: guid) that's associated with the account.
+* Create a route that allows a new user to register an account. For this (very contrived) example, a user can register by posting a unique username, password, and email to the server. Upon post of the account, the server should return a unique key (hint: guid/uuid) that's associated with the account.
 * The user should pass this unique key in as a header with every request to the server.
 * If a user tries to interact with the API without a valid key in the header, the API should return a 403 (forbidden) status code.
 * Once you enable auth, add a field in your Todo called `userId` and associate it with the `_id` of the user.
