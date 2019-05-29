@@ -1,0 +1,48 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+#main-container {
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+#todo-container {
+  width: 500px;
+  text-align: left;
+  margin: 0 auto;
+}
+.flex {
+  display: flex;
+  justify-content: flex-start;
+}
+#todo-container button {
+  height: 30px;
+  margin-top: 12px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+#todo-container input {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 20px;
+}
+.todo {
+  width: 800px;
+}
+.filter {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+}
+#text-entry {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+.add-todo-flex {
+  margin: 0 auto;
+  width: 200px;
+}

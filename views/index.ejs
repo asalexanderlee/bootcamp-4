@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <script type="text/javascript">
+  function deleteTodo(id) {
+  fetch(`/todo/${id}`, { method: "DELETE" })
+    .then(response => {
+      if (response.ok) location.reload();
+      throw new Error("Request failed.");
+    })
+    .catch(error => console.log(error));
+}
+function addTodo() {
+  const todoText = document.getElementById("text-entry").value;
+  fetch(`/todo`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ text: todoText })
+  })
+    .then(response => {
+      if (response.ok) location.reload();
+      throw new Error("Request failed.");
+    })
+    .catch(error => console.log(error));
+}
+</script>
+  <style>
+  </style>
+  <body>
+    <div id="main-container">
+      <h1>Todos</h1>
+      <div class="flex add-todo-flex">
+        <input type="text" id="text-entry"/>
+        <button onclick="addTodo()">Add todo</button>
+      </div>
+      <div id="todo-container">
+      <% todos.forEach(function(todo){ %>
+        <div class="flex">
+          <p class="todo"><%= todo.description %></p>
+          <input type="checkbox"/>
+          <button onclick="deleteTodo('<%= todo._id %>')">❌</button>
+        </div>
+      <%});%>
+      </div>
+    </div>
+
+  </body>
+</html>

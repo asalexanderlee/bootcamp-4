@@ -1,31 +1,19 @@
 const router = require("express").Router();
 const User = require("mongoose").model("User");
-const uuidv1 = require("uuid/v1");
-const isAuthenticated = require("./auth");
 
 // get all users
 router.get("/", (req, res) => {
-  isAuthenticated(req.body.token).then(canAccess => {
-    if (canAccess) {
-      User.find({})
-        .then(users => res.send(users))
-        .catch(err => res.status(500).send("Failed to get info from database"));
-    } else res.status(403).send("You must be registered as a user before viewing this info.");
-  });
+  User.find({})
+    .then(users => res.send(users))
+    .catch(err => console.log(err));
 });
 
-// register a user account
-router.post("/", (req, res) => {
-  const guid = uuidv1();
-  const user = new User({
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-    guid: guid
-  });
+// add a user
+router.post("/:firstName/:lastName/:token", (req, res) => {
+  const user = new User({ firstName: req.params.firstName, lastName: req.params.lastName, token: req.params.token });
   user.save((err, doc) => {
-    if (err) res.status(500).send(err);
-    res.send(guid);
+    if (err) console.log(err);
+    res.send("Successfully added user");
   });
 });
 
