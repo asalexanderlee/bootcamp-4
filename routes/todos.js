@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Todo = require("mongoose").model("Todo");
+const mongoose = require("mongoose");
 const isAuthenticated = require("./auth");
 
 //get all todos
@@ -44,9 +45,10 @@ router.get("/:_id", (req, res) => {
 });
 //add todo
 router.post("/", (req, res) => {
-  isAuthenticated(req.body.token).then(canAccess => {
-    if (canAccess) {
-      const todo = new Todo({ description: req.body.text, createdOn: new Date(), completedOn: null });
+  isAuthenticated(req.body.token).then(userId => {
+    if (userId) {
+      //get userId back from isAuthenticated function and assign to todo
+      const todo = new Todo({ description: req.body.text, createdOn: new Date(), completedOn: null, userId: userId });
       todo.save((err, doc) => {
         if (err) console.error(err);
         res.send("Successfully added todo");
