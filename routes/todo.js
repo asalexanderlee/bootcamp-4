@@ -2,8 +2,6 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const Todo = mongoose.model("Todo");
 
-// QUESTION: how does router work?
-// QUESTION: what response codes should we send back?
 //get all todos
 router.get("/", (req, res) => {
   Todo.find({})

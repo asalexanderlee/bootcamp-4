@@ -17,7 +17,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // initialize Mongoose and models
 require("./models");
-const User = require("mongoose").model("User");
 mongoose.connect("mongodb://localhost:27017/todoApp", { useNewUrlParser: true });
 
 // set the view engine to ejs

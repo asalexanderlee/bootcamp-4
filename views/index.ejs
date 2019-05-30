@@ -9,12 +9,14 @@
   function deleteTodo(id) {
   fetch(`/todo/${id}`, { method: "DELETE" })
     .then(response => {
+      //if successfully deleted, reload page with updates
       if (response.ok) location.reload();
       throw new Error("Request failed.");
     })
     .catch(error => console.log(error));
 }
 function addTodo() {
+  //get the text for the new todo from the text box
   const todoText = document.getElementById("text-entry").value;
   fetch(`/todo`, {
     method: "POST",
@@ -22,6 +24,7 @@ function addTodo() {
     body: JSON.stringify({ text: todoText })
   })
     .then(response => {
+      //if successfully added, reload page with updates
       if (response.ok) location.reload();
       throw new Error("Request failed.");
     })
