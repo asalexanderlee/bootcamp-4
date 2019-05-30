@@ -76,6 +76,11 @@ Writing HTML in your routes becomes a little burdensome, so in days of lore, dev
 
 Your task is to integrate [EJS](http://ejs.co/) into Express and then use it to render an HTML webpage that allows users to add or remove items from their todo list.
 
+**Several Tips:**
+- be sure to set your render engine AND tell your server where to get static files (i.e. css, pictures) in your server.js
+- write a `GET /` route in index.js that will render your views. The only difference between this route and the routes that you've written before is that this `GET /` route will serve up a view instead of info from your db
+- HINT: use `res.render()` within your `GET /` 
+
 ### Release 3
 
 _STOP:_ Commit and push your scratch branch to github and checkout the branch you were working on in `release 1`.
