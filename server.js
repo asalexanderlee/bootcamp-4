@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const env = require("dotenv").config();
 
 // initialize express
 const app = express();
@@ -15,8 +16,9 @@ app.use(morgan("tiny"));
 
 // initialize Mongoose and models
 require("./models");
-const User = require("mongoose").model("User");
 mongoose.connect("mongodb://localhost:27017/todoApp", { useNewUrlParser: true });
+
+require("./cron");
 
 // initialize routes
 // NOTE: you have to do this after you initialize your models
