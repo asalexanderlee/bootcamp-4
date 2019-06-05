@@ -36,7 +36,6 @@ router.post("/", (req, res) => {
 });
 //delete todo by id
 router.delete("/:_id", (req, res) => {
-  console.log("testing");
   Todo.deleteOne({ _id: mongoose.Types.ObjectId(req.params._id) })
     .then(() => res.send("Successfully deleted todo"))
     .catch(err => console.log(err));
