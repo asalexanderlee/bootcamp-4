@@ -17,7 +17,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // initialize Mongoose and models
 require("./models");
-mongoose.connect("mongodb://localhost:27017/todoApp", { useNewUrlParser: true });
+mongoose
+  .connect("mongodb://localhost:27017/todoApp", { useNewUrlParser: true })
+  .catch(err => console.error("Could not connect to mongo. Please ensure mongod is running."));
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
