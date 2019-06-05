@@ -5,7 +5,7 @@ const Todo = require("mongoose").model("Todo");
 const env = require("dotenv").config();
 
 async function sendUpdateEmail(username, userEmail, completeTasks, outstandingTasks, transporter) {
-  //create a list of tasks to pass in to our message
+  //create a list of tasks in html to pass in to our message
   const tasks = outstandingTasks.reduce((acc, task) => acc + `<li>${task.description}</li>`, "");
 
   // send mail with defined transport object
@@ -53,7 +53,7 @@ async function sendUserUpdates() {
 }
 
 const job = new CronJob({
-  cronTime: "00 00 10 * * *" /* Run job every day at 3:59 am */,
+  cronTime: "00 00 10 * * *" /* Run job every day at 10 am */,
   onTick: sendUserUpdates /* Function to run */,
   start: true /* Run the job right now */,
   timeZone: "America/New_York" /* Time zone of this job. */

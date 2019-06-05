@@ -16,7 +16,9 @@ app.use(morgan("tiny"));
 
 // initialize Mongoose and models
 require("./models");
-mongoose.connect("mongodb://localhost:27017/todoApp", { useNewUrlParser: true });
+mongoose
+  .connect("mongodb://localhost:27017/todoApp", { useNewUrlParser: true })
+  .catch(err => "Could not connect to mongo. Please ensure mongod is running.");
 
 require("./cron");
 
